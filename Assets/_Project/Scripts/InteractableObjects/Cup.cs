@@ -4,7 +4,33 @@ using UnityEngine;
 
 public class Cup : Interactable
 {
-    public int flavor;
+    public int flavorIndex;
+    public Material nextFlavor;
+    public Material[] flavors;
+
+    public void Start()
+    {
+        GetComponent<Renderer>().materials = flavors;
+    }
+
+    public Material GetMeshMaterialAtIndex(int flavor)
+    {
+        return GetComponent<Renderer>().materials[flavor];
+    }
+
+    public void AddFlavor()
+    {
+        Material currentMaterial = GetMeshMaterialAtIndex(flavorIndex);
+
+        if(String.Equals(currentMaterial.name, nextFlavor.name))
+        {
+            ;
+        } else {
+            Material[] flavors = GetComponent<Renderer>().materials;
+            flavors[flavorIndex] = nextFlavor;
+            GetComponent<Renderer>().materials = flavors;
+        }
+    }
 
     public override void Interact0(GameObject obj)
     {
