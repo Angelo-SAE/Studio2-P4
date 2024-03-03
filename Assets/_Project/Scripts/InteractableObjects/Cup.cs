@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Cup : Interactable
 {
+    public int flavor;
+
     public override void Interact0(GameObject obj)
     {
       transform.parent = obj.transform;
