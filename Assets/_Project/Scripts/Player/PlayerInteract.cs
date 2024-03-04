@@ -10,6 +10,13 @@ public class PlayerInteract : MonoBehaviour
     private GameObject interactbleObject, currentCup;
     private bool hasCup;
 
+    private enum InteractableObject
+    {
+      CupHolder = 6,
+      Cup = 7,
+      Dispenser = 8
+    }
+
     void Update()
     {
       CheckForAndStoreInteractable();
@@ -34,41 +41,44 @@ public class PlayerInteract : MonoBehaviour
 
     private void Interact()
     {
-      if(Input.GetMouseButtonDown(0) && !hasCup)
+      if(Input.GetMouseButtonDown(0))
       {
         switch(interactbleObject.layer)
         {
-          case 6:
-          currentCup = interactbleObject.GetComponent<Interactable>().StoredCup;
-          interactbleObject.GetComponent<Interactable>().Interact0(cupHolder);
-          hasCup = true;
+          case (int)InteractableObject.CupHolder:
+          if(hasCup)
+          {
+            interactbleObject.GetComponent<Interactable>().Interact0(currentCup);
+            currentCup = null;
+            hasCup = false;
+          }
           break;
-          case 7:
-          interactbleObject.GetComponent<Interactable>().Interact0(cupHolder);
-          currentCup = interactbleObject;
-          hasCup = true;
+          case (int)InteractableObject.Cup:
+          //does nothing
           break;
-          case 8:
+          case (int)InteractableObject.Dispenser:
+          interactbleObject.GetComponent<Interactable>().Interact0(null);
           break;
         }
 
       }
-      if(Input.GetMouseButtonDown(1) && hasCup)
+      if(Input.GetMouseButtonDown(1) && !hasCup)
       {
         switch(interactbleObject.layer)
         {
-          case 6:
-          interactbleObject.GetComponent<Interactable>().Interact1(currentCup);
-          currentCup = null;
-          hasCup = false;
+          case (int)InteractableObject.CupHolder:
+          currentCup = interactbleObject.GetComponent<Interactable>().StoredCup;
+          interactbleObject.GetComponent<Interactable>().Interact1(cupHolder);
+          if(currentCup is not null) hasCup = true;
           break;
-          case 7:
-          //does nothing
+          case (int)InteractableObject.Cup:
+          interactbleObject.GetComponent<Interactable>().Interact1(cupHolder);
+          currentCup = interactbleObject;
+          hasCup = true;
           break;
-          case 8:
+          case (int)InteractableObject.Dispenser:
           break;
         }
-
       }
     }
 }

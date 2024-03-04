@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class Interactable : MonoBehaviour
 {
-    private GameObject storedCup;
+    protected GameObject storedCup;
 
     public GameObject StoredCup
     {
@@ -13,4 +13,13 @@ public abstract class Interactable : MonoBehaviour
     }
     public abstract void Interact0(GameObject obj);
     public abstract void Interact1(GameObject obj);
+}
+
+public enum DrinkFlavors
+{
+  FirstFlavor = 1,
+  SecondFlavor = 2,
+  ThirdFlavor = 3,
+  FourthFlavor = 4,
+  FifthFlavor = 5
 }

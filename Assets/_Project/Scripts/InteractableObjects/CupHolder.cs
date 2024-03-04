@@ -6,15 +6,18 @@ public class CupHolder : Interactable
 {
     public override void Interact0(GameObject obj)
     {
-      StoredCup.transform.parent = obj.transform;
-      StoredCup.transform.localPosition = Vector3.zero;
-      StoredCup = null;
+      obj.transform.parent = transform;
+      obj.transform.localPosition = Vector3.zero;
+      storedCup = obj;
     }
 
     public override void Interact1(GameObject obj)
     {
-      obj.transform.parent = transform;
-      obj.transform.localPosition = Vector3.zero;
-      StoredCup = obj;
+      if(storedCup is not null)
+      {
+        storedCup.transform.parent = obj.transform;
+        storedCup.transform.localPosition = Vector3.zero;
+        storedCup = null;
+      }
     }
 }
