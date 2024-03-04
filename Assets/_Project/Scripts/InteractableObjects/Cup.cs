@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Cup : Interactable
 {
-    public int flavorIndex;
-    public Material nextFlavor;
-    public Material[] flavors;
+    [SerializeField] int flavorIndex;
+    [SerializeField] Material nextFlavor;
+    [SerializeField] Material[] flavors;
 
     public void Start()
     {
