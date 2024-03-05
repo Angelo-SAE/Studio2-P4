@@ -24,8 +24,11 @@ public class SubmitOrder : Interactable
           correct++;
           Destroy(storedCup);
           orderScript.GetNewOrder();
+          orderScript.IncreaseAndDisplayScore();
         } else {
           incorrect++;
+          orderScript.DecreaseAndDisplayScore();
+          orderScript.IncorrectOrderDisplay();
           Destroy(storedCup);
         }
       }    }

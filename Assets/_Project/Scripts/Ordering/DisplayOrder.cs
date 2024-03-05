@@ -5,8 +5,9 @@ using TMPro;
 
 public class DisplayOrder : Orders
 {
-
-    [SerializeField] private TMP_Text orderText;
+    [SerializeField] private GameObject orderTextObj, errorTextObj;
+    [SerializeField] private TMP_Text orderText, scoreText;
+    private int score;
 
     void Start()
     {
@@ -22,5 +23,30 @@ public class DisplayOrder : Orders
     {
       SelectRandomOrder();
       DisplayCurrentOrder(currentOrder);
+    }
+
+    public void IncreaseAndDisplayScore()
+    {
+      score++;
+      scoreText.text = score.ToString();
+    }
+
+    public void DecreaseAndDisplayScore()
+    {
+      score--;
+      scoreText.text = score.ToString();
+    }
+
+    public void IncorrectOrderDisplay()
+    {
+      orderTextObj.SetActive(false);
+      errorTextObj.SetActive(true);
+      Invoke("ReturnNormalOrder", 1f);
+    }
+
+    private void ReturnNormalOrder()
+    {
+      errorTextObj.SetActive(false);
+      orderTextObj.SetActive(true);
     }
 }
