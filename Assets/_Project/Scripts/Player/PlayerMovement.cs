@@ -17,6 +17,10 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
       TakeInput();
+    }
+
+    void FixedUpdate()
+    {
       MovePlayer();
     }
 

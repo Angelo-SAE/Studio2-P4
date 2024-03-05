@@ -32,24 +32,28 @@ public class Cup : Interactable
       if(mixCount < mix.Length)
       {
         mix[mixCount] = drinkNumber;
-        Debug.Log(mix[0]);
-        Debug.Log(mix[1]);
-        Debug.Log(mix[2]);
         mixCount++;
       }
 
     }
 
-    private bool CheckDrinkMix(int[] order)
+    public bool CheckDrinkMix(int[] order)
     {
       for(int a = 0; a < order.Length; a++)
       {
-        if(mix[a] != order[a])
+        for(int b = 0; b < mix.Length; b++)
         {
-          return false;
-          DestroyCup();
+          if(mix[b] == order[a])
+          {
+            break;
+          }
+          if(b == mix.Length - 1)
+          {
+            return false;
+          }
         }
       }
+
       return true;
     }
 

@@ -11,15 +11,17 @@ public abstract class Interactable : MonoBehaviour
       get => storedCup;
       set => storedCup = value;
     }
+
     public abstract void Interact0(GameObject obj);
     public abstract void Interact1(GameObject obj);
 }
 
 public enum DrinkFlavors
 {
-  FirstFlavor = 1,
-  SecondFlavor = 2,
-  ThirdFlavor = 3,
-  FourthFlavor = 4,
-  FifthFlavor = 5
+  Banana = 1,
+  Kiwi = 2,
+  Lemon = 3,
+  Mango = 4,
+  Orange = 5,
+  Watermelon = 6
 }

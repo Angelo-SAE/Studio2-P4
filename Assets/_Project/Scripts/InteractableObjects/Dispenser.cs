@@ -6,13 +6,14 @@ public class Dispenser : Interactable
 {
 
     [SerializeField] private GameObject cupHolder;
+    [SerializeField] private DrinkFlavors drinkFlavor;
 
     public override void Interact0(GameObject obj)
     {
       storedCup = cupHolder.GetComponent<Interactable>().StoredCup;
       if(storedCup is not null)
       {
-        storedCup.GetComponent<Cup>().AddDrinkToMix((int)DrinkFlavors.FirstFlavor);
+        storedCup.GetComponent<Cup>().AddDrinkToMix((int)drinkFlavor);
       }
     }
 

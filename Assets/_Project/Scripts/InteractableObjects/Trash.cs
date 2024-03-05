@@ -2,17 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Trash : MonoBehaviour
+public class Trash : Interactable
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void Interact0(GameObject obj)
     {
-        
+      Destroy(obj);
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void Interact1(GameObject obj)
     {
-        
+      //does nothing
     }
 }
