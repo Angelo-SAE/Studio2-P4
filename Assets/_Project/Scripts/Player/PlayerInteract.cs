@@ -16,7 +16,8 @@ public class PlayerInteract : MonoBehaviour
       Cup = 7,
       Dispenser = 8,
       Trash = 9,
-      SubmitButton = 10
+      SubmitButton = 10,
+      CupDispenser = 11
     }
 
     void Update()
@@ -70,6 +71,9 @@ public class PlayerInteract : MonoBehaviour
           case (int)InteractableObject.SubmitButton:
           interactbleObject.GetComponent<Interactable>().Interact0(null);
           break;
+          case (int)InteractableObject.CupDispenser:
+          //does nothing
+          break;
         }
 
       }
@@ -95,6 +99,11 @@ public class PlayerInteract : MonoBehaviour
           break;
           case (int)InteractableObject.SubmitButton:
           //does nothing
+          break;
+          case (int)InteractableObject.CupDispenser:
+          interactbleObject.GetComponent<Interactable>().Interact1(cupHolder);
+          currentCup = cupHolder.transform.GetChild(0).gameObject;
+          hasCup = true;
           break;
         }
       }
