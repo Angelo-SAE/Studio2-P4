@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Cup : Interactable
 {
-
+    [SerializeField] private GameObject fluid;
     private int[] mix;
     private int mixCount;
 
@@ -33,8 +33,13 @@ public class Cup : Interactable
       {
         mix[mixCount] = drinkNumber;
         mixCount++;
+        AddFluid();
       }
+    }
 
+    private void AddFluid()
+    {
+      if(mixCount == mix.Length) fluid.SetActive(true);
     }
 
     public bool CheckDrinkMix(int[] order)
@@ -53,7 +58,6 @@ public class Cup : Interactable
           }
         }
       }
-
       return true;
     }
 

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Dispenser : Interactable
 {
 
-    [SerializeField] private GameObject cupHolder;
+    [SerializeField] private GameObject cupHolder, fluid;
     [SerializeField] private DrinkFlavors drinkFlavor;
     [SerializeField] private Material buttonMat;
     private bool coolDown;
@@ -15,6 +15,7 @@ public class Dispenser : Interactable
       storedCup = cupHolder.GetComponent<Interactable>().StoredCup;
       if(storedCup is not null && !coolDown)
       {
+        fluid.SetActive(true);
         cupHolder.GetComponent<CupHolder>().cantTakeCup = true;
         storedCup.GetComponent<Cup>().AddDrinkToMix((int)drinkFlavor);
         coolDown = true;
@@ -36,6 +37,7 @@ public class Dispenser : Interactable
 
     private void CoolDownReset()
     {
+      fluid.SetActive(false);
       coolDown = false;
       ChangeMaterialColor(Color.green);
       cupHolder.GetComponent<CupHolder>().cantTakeCup = false;
