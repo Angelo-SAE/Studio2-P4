@@ -7,6 +7,8 @@ public class PlayerInteract : MonoBehaviour
     [SerializeField] private GameObject cupHolder, lookFrom;
     [SerializeField] private LayerMask interactableLayers;
     [SerializeField] private float checkDistance;
+    [SerializeField] private TutorialScript tutorialScript;
+    [SerializeField] private bool tutorial;
     private GameObject interactbleObject, currentCup;
     private bool hasCup;
 
@@ -72,6 +74,10 @@ public class PlayerInteract : MonoBehaviour
           break;
           case (int)InteractableObject.SubmitButton:
           interactbleObject.GetComponent<Interactable>().Interact0(null);
+          if(tutorial && tutorialScript is not null)
+          {
+            tutorialScript.bellPressed = true;
+          }
           break;
           case (int)InteractableObject.CupDispenser:
           //does nothing

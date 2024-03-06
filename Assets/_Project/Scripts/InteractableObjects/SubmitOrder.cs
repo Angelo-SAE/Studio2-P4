@@ -7,7 +7,7 @@ public class SubmitOrder : Interactable
 
     [SerializeField] private GameObject cupHolder, orderScreen;
     private DisplayOrder orderScript;
-    [SerializeField] private int correct, incorrect;
+    public int correct, incorrect;
 
     void Awake()
     {
@@ -23,11 +23,14 @@ public class SubmitOrder : Interactable
         {
           correct++;
           Destroy(storedCup);
+          cupHolder.GetComponent<Interactable>().StoredCup = null;
           orderScript.GetNewOrder();
           orderScript.IncreaseAndDisplayScore();
+          orderScript.CorrectOrderDisplay();
         } else {
           incorrect++;
-          orderScript.DecreaseAndDisplayScore();
+          //orderScript.DecreaseAndDisplayScore();
+          cupHolder.GetComponent<Interactable>().StoredCup = null;
           orderScript.IncorrectOrderDisplay();
           Destroy(storedCup);
         }
