@@ -19,9 +19,9 @@ public abstract class Interactable : MonoBehaviour
 public enum DrinkFlavors
 {
   Banana = 1,
-  Kiwi = 2,
+  Blueberry = 2,
   Lemon = 3,
-  Mango = 4,
+  Strawberry = 4,
   Orange = 5,
   Watermelon = 6
 }
