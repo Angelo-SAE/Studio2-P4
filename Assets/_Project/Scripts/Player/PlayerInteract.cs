@@ -65,7 +65,9 @@ public class PlayerInteract : MonoBehaviour
           case (int)InteractableObject.Trash:
           if(hasCup)
           {
-          interactbleObject.GetComponent<Interactable>().Interact0(currentCup);
+            interactbleObject.GetComponent<Interactable>().Interact0(currentCup);
+            currentCup = null;
+            hasCup = false;
           }
           break;
           case (int)InteractableObject.SubmitButton:
@@ -82,9 +84,12 @@ public class PlayerInteract : MonoBehaviour
         switch(interactbleObject.layer)
         {
           case (int)InteractableObject.CupHolder:
-          currentCup = interactbleObject.GetComponent<Interactable>().StoredCup;
-          interactbleObject.GetComponent<Interactable>().Interact1(cupHolder);
-          if(currentCup is not null) hasCup = true;
+          if(!interactbleObject.GetComponent<CupHolder>().cantTakeCup)
+          {
+            currentCup = interactbleObject.GetComponent<Interactable>().StoredCup;
+            interactbleObject.GetComponent<Interactable>().Interact1(cupHolder);
+            if(currentCup is not null) hasCup = true;
+          }
           break;
           case (int)InteractableObject.Cup:
           interactbleObject.GetComponent<Interactable>().Interact1(cupHolder);

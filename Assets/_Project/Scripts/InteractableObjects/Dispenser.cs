@@ -15,6 +15,7 @@ public class Dispenser : Interactable
       storedCup = cupHolder.GetComponent<Interactable>().StoredCup;
       if(storedCup is not null && !coolDown)
       {
+        cupHolder.GetComponent<CupHolder>().cantTakeCup = true;
         storedCup.GetComponent<Cup>().AddDrinkToMix((int)drinkFlavor);
         coolDown = true;
         ChangeMaterialColor(Color.red);
@@ -37,5 +38,6 @@ public class Dispenser : Interactable
     {
       coolDown = false;
       ChangeMaterialColor(Color.green);
+      cupHolder.GetComponent<CupHolder>().cantTakeCup = false;
     }
 }

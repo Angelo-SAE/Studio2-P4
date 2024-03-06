@@ -21,7 +21,7 @@ public class Orders : MonoBehaviour
 
     protected void SelectRandomOrder()
     {
-      currentOrder = listOfOrders[Random.Range(1, 50 + 1)];
+      currentOrder = listOfOrders[Random.Range(1, 50)];
     }
 
     private void CreateOrderList()

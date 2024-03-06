@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CupHolder : Interactable
 {
+    public bool cantTakeCup;
+
     public override void Interact0(GameObject obj)
     {
       obj.transform.parent = transform;
@@ -13,7 +15,7 @@ public class CupHolder : Interactable
 
     public override void Interact1(GameObject obj)
     {
-      if(storedCup is not null)
+      if(storedCup is not null && !cantTakeCup)
       {
         storedCup.transform.parent = obj.transform;
         storedCup.transform.localPosition = Vector3.zero;
