@@ -29,15 +29,15 @@ public class DisplayOrder : Orders
       orderText.text = "Banana<br>Banana<br>Lemon";
     }
 
-    private void DisplayCurrentOrder(int[] order)
+    private void DisplayCurrentOrder(string order)
     {
-      orderText.text = order[0].ToString()+ "<br>" + order[1].ToString() + "<br>" + order[2].ToString();
+      orderText.text = currentOrderText;
     }
 
     public void GetNewOrder()
     {
-      SelectRandomOrder();
-      DisplayCurrentOrder(currentOrder);
+      GetNextOrder();
+      DisplayCurrentOrder(currentOrderText);
     }
 
     public void IncreaseAndDisplayScore()
