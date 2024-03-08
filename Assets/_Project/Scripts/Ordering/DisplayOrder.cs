@@ -31,13 +31,18 @@ public class DisplayOrder : Orders
 
     private void DisplayCurrentOrder(string order)
     {
-      orderText.text = currentOrderText;
+      orderText.text = order;
     }
 
     public void GetNewOrder()
     {
-      GetNextOrder();
-      DisplayCurrentOrder(currentOrderText);
+      if(!tutorial)
+      {
+        GetNextOrder();
+        DisplayCurrentOrder(currentOrderText);
+      } else {
+        DisplayCurrentOrder("");
+      }
     }
 
     public void IncreaseAndDisplayScore()

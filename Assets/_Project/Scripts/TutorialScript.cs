@@ -16,7 +16,7 @@ public class TutorialScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-      tutorialText.text = "Welcome, valued employee to MIX-UP LLC. As you are a new employee you are required to take the manditory smoothie training program.<br>To start the training click on the service bell.";
+      tutorialText.text = "Welcome, valued employee to MIX-UP. As you are a new employee you are required to take the manditory smoothie training program.<br>To start the training click on the service bell.";
     }
 
     // Update is called once per frame
@@ -43,13 +43,13 @@ public class TutorialScript : MonoBehaviour
       {
         Debug.Log("4");
         IncreaseTutorialSection();
-        tutorialText.text = "Congrats on completing your first order. Although this was simple please keep in mind that they don't place their orders with as clear of a description.";
+        tutorialText.text = "Congrats on completing your first order. Although this may seem simple please keep in mind that they don't place their orders with as clear of a description.";
         Invoke("IncreaseTutorialSection", 15f);
       } else if(tutorialSection == 3)
       {
         Debug.Log("3");
         IncreaseTutorialSection();
-        tutorialText.text = "Take a cup from the stack and fill the cup with the ingredients listed on the monitor. Once done place the smoothie on the tray and hit the service bell.";
+        tutorialText.text = "Right click to take a cup from the stack and fill the cup with the ingredients listed on the monitor. Once done place the smoothie on the tray and hit the service bell.";
       }
       if(tutorialSection == 6)
       {

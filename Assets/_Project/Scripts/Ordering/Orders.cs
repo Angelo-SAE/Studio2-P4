@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Orders : MonoBehaviour
 {
@@ -18,8 +19,8 @@ public class Orders : MonoBehaviour
 
     void Awake()
     {
-      listOfOrders = new int[15][];
-      listOfOrdersText = new string[15];
+      listOfOrders = new int[11][];
+      listOfOrdersText = new string[11];
       CreateOrderList();
     }
 
@@ -30,12 +31,21 @@ public class Orders : MonoBehaviour
 
     protected void GetNextOrder()
     {
-      if(orderNumber < 15)
+      if(orderNumber < 11)
       {
         currentOrder = listOfOrders[orderNumber];
         currentOrderText = listOfOrdersText[orderNumber];
       }
+      CheckForWin();
       orderNumber++;
+    }
+
+    private void CheckForWin()
+    {
+      if(orderNumber >= 11)
+      {
+        SceneManager.LoadScene("WinScene");
+      }
     }
 
     private void CreateOrderList()
@@ -43,23 +53,23 @@ public class Orders : MonoBehaviour
       //order numbers
       listOfOrders[0] = new int[] {(int)DrinkFlavors.Banana, (int)DrinkFlavors.Banana, (int)DrinkFlavors.Banana};
       listOfOrders[1] = new int[] {(int)DrinkFlavors.Lemon, (int)DrinkFlavors.Blueberry, (int)DrinkFlavors.Strawberry};
-      listOfOrders[2] = new int[] {(int)DrinkFlavors.Lemon, (int)DrinkFlavors.Banana};
-      listOfOrders[3] = new int[] {(int)DrinkFlavors.Lemon, (int)DrinkFlavors.Lemon, (int)DrinkFlavors.Lemon};
+      listOfOrders[2] = new int[] {(int)DrinkFlavors.Watermelon, (int)DrinkFlavors.Strawberry};
+      listOfOrders[3] = new int[] {(int)DrinkFlavors.Lemon, (int)DrinkFlavors.Orange, (int)DrinkFlavors.Strawberry};
       listOfOrders[4] = new int[] {(int)DrinkFlavors.Lemon, (int)DrinkFlavors.Banana};
       listOfOrders[5] = new int[] {(int)DrinkFlavors.Watermelon, (int)DrinkFlavors.Orange, (int)DrinkFlavors.Lemon};
       listOfOrders[6] = new int[] {(int)DrinkFlavors.Watermelon, (int)DrinkFlavors.Banana};
       listOfOrders[7] = new int[] {(int)DrinkFlavors.Blueberry, (int)DrinkFlavors.Blueberry, (int)DrinkFlavors.Blueberry};
       listOfOrders[8] = new int[] {(int)DrinkFlavors.Lemon, (int)DrinkFlavors.Blueberry, (int)DrinkFlavors.Strawberry};
       listOfOrders[9] = new int[] {(int)DrinkFlavors.Lemon, (int)DrinkFlavors.Blueberry, (int)DrinkFlavors.Banana};
-      listOfOrders[9] = new int[] {(int)DrinkFlavors.Watermelon, (int)DrinkFlavors.Blueberry, (int)DrinkFlavors.Strawberry};
+      listOfOrders[10] = new int[] {(int)DrinkFlavors.Watermelon, (int)DrinkFlavors.Blueberry, (int)DrinkFlavors.Strawberry};
 
       //order text
       listOfOrdersText[0] = "Can I order a triple banana smoothie";
       listOfOrdersText[1] = "Can I order a lemon, blueberry and strawberry mix";
-      listOfOrdersText[2] = "I want a smoothie mix with two fruits of the same color";
+      listOfOrdersText[2] = "I want a blood smoothie mix with two fruits of the same color";
       listOfOrdersText[3] = "I want a smoothie mix of three of the most sour fruits";
       listOfOrdersText[4] = "I want a smoothie mix of the most sweet and the most sour fruit";
-      listOfOrdersText[5] = "Give me a smoothie made of three round fruits";
+      listOfOrdersText[5] = "Give me a smoothie made of three different big round fruits";
       listOfOrdersText[6] = "Give me a smoothie with a sweet red fruit mixed with a non sour yellow fruit";
       listOfOrdersText[7] = "GIVE smOoThie wITh SmALl FrUITS oF MaNY";
       listOfOrdersText[8] = "SMOOTHIE WITH THREE DIFFERENT NOT SWEET";

@@ -50,6 +50,7 @@ public class Cup : Interactable
         {
           if(mix[b] == order[a])
           {
+            mix[b] = 0;
             break;
           }
           if(b == mix.Length - 1)
